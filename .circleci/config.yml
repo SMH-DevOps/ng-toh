@@ -47,11 +47,11 @@ jobs:
             unzip awscliv2.zip
             sudo ./aws/install
             rm -rf awscliv2.zip aws
-      # - run:
-      #     name: Upload to S3
-      #     command: |
-      #       DIST_OUTPUT_DIR=$(find dist -maxdepth 1 -type d | awk 'NR==2')
-      #       aws s3 sync ${DIST_OUTPUT_DIR}/browser/ s3://${S3_BUCKET_NAME} --delete
+      - run:
+          name: Upload to S3
+          command: |
+            DIST_OUTPUT_DIR=$(find dist -maxdepth 1 -type d | awk 'NR==2')
+            aws s3 sync ${DIST_OUTPUT_DIR}/browser/ s3://${S3_BUCKET_NAME} --delete
 
 workflows:
   version: 2
